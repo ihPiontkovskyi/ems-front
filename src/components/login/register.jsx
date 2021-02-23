@@ -17,17 +17,17 @@ export class Register extends React.Component {
           <div className="form">
           <div className="form-group">
               <select name="chooseСharacter">
-                <option value="Teacher">Teacher</option>
+                <option value="Lecturer">Lecturer</option>
                 <option value="Student">Student</option>
               </select>
             </div>
             <div className="form-group">
               <label htmlFor="username">First Name</label>
-              <input type="text" name="firstname" placeholder="First Name" />
+              <input type="text" name="firstName" placeholder="First Name" />
             </div>
             <div className="form-group">
               <label htmlFor="username">Second Name</label>
-              <input type="text" name="secondname" placeholder="Second Name" />
+              <input type="text" name="secondName" placeholder="Second Name" />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>

@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import loginImg from "../../login.svg";
 import Cookies from 'universal-cookie';
-
+import base64 from 'base-64';
 export class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -24,18 +24,18 @@ export class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
+    axios.defaults.baseURL = 'https://service-ems.herokuapp.com/'
     axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = 'https://emsknu.herokuapp.com/'
     axios.post('/login',
         {
           uid: this.state.uid,
-          password: this.state.password
+          password: base64.encode(this.state.password)
         }
     ).then(response => {
       const cookies = new Cookies();
       cookies.set('SESSIONID', response.data.sessionId, {path: '/'});
       cookies.set('ROLE', response.data.role, {path: '/'});
-    })
+    });
 
   }
 
@@ -50,7 +50,7 @@ export class Login extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="uid" placeholder="username" 
+              <input type="text" name="uid" placeholder="username"
                 onChange={this.myChangeHandleUID}
               />
             </div>
