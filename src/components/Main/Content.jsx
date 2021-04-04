@@ -12,98 +12,153 @@ import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
+import Tabs from './Tabs'
+import PostCard from "./Posts/PostCard"
+import CoursesCard from "./Courses/CoursesCard"
+import CoursesForm from "./Courses/CoursesForm"
+import GroupsCard from "./Groups/GroupsCard"
+import GroupsForm from "./Groups/GroupsForm"
 
 const styles = (theme) => ({
-  secondaryBar: {
-    zIndex: 0,
-  },
-  paper: {
-    maxWidth: 1500,
-    margin: 'auto',
-    overflow: 'hidden',
-  },
-  searchBar: {
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-  },
-  searchInput: {
-    fontSize: theme.typography.fontSize,
-  },
-  block: {
-    display: 'block',
-  },
-  addPost: {
-    marginRight: theme.spacing(1),
-  },
-  contentWrapper: {
-    margin: '40px 16px',
-  },
+    paper: {
+        maxWidth: 1600,
+        margin: 'auto',
+        overflow: 'hidden',
+    },
+    // searchBar: {
+    //     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    // },
+    // searchInput: {
+    //     fontSize: theme.typography.fontSize,
+    // },
+    // block: {
+    //     display: 'block',
+    // },
+    // addUser: {
+    //     marginRight: theme.spacing(1),
+    // },
+    contentWrapper: {
+        margin: '40px 16px',
+    },
+    course: {
+        margin: '20px 15px'
+    }
 });
 
 function Content(props) {
-  const { classes } = props;
-
-  return (
-    <div>
-      <React.Fragment>
-        <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Post" />
-          <Tab textColor="inherit" label="BTN2" />
-          <Tab textColor="inherit" label="BTN3" />
-          <Tab textColor="inherit" label="BTN4" />
-        </Tabs>
-      </AppBar>
-      </React.Fragment>
-      <Paper className={classes.paper}>
-        <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
-          <Toolbar>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item>
-                <SearchIcon className={classes.block} color="inherit" />
-              </Grid>
-              <Grid item xs>
-                <TextField
-                  fullWidth
-                  placeholder="Search by post title"
-                  InputProps={{
-                    disableUnderline: true,
-                    className: classes.searchInput,
-                  }}
-                />
-              </Grid>
-              <Grid item>
-                <Button variant="contained" color="primary" className={classes.addPost}>
-                  Add Post
-                </Button>
-                <Tooltip title="Reload">
-                  <IconButton>
-                    <RefreshIcon className={classes.block} color="inherit" />
-                  </IconButton>
-                </Tooltip>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
-        <div className={classes.contentWrapper}>
-          <Typography color="textSecondary" align="center">
-            No posts yet
-          </Typography>
-        </div>
-      </Paper>
-    </div>
-  );
+    const { classes } = props;
+    //  const turtles = [
+    //      {
+    //          name: "Leonardo",
+    //          nickName: "Leo",
+    //          weapon: "Katana",
+    //          imgUrl: "https://upload.wikimedia.org/wikipedia/en/e/ed/Leonardo_%28Teenage_Mutant_Ninja_Turtles%29.jpg"
+    //      },
+    //      {
+    //          name: "Donatello",
+    //          nickName: "Don",
+    //          weapon: "Bo staff",
+    //          imgUrl: "https://upload.wikimedia.org/wikipedia/en/5/5a/Donatello_%28Teenage_Mutant_Ninja_Turtles%29.jpg"
+    //      },
+    //      {
+    //          name: "Michelangelo",
+    //          nickName: "Mikey",
+    //          weapon: "Nunchucks",
+    //          imgUrl: "https://upload.wikimedia.org/wikipedia/en/f/f3/Michelangelo_%28Teenage_Mutant_Ninja_Turtles%29.jpg"
+    //      },
+    //      {
+    //          name: "Raphael",
+    //          nickName: "Raph",
+    //          weapon: "Sai",
+    //          imgUrl: "https://upload.wikimedia.org/wikipedia/en/7/72/Raphael_%28Teenage_Mutant_Ninja_Tutles%29.jpg"
+    //      }
+    //  ]
+    return (
+      <div>
+        {/* <Tabs/> */}
+         <Paper className={classes.paper}>
+            {/* <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
+                <Toolbar>
+                    <Grid container spacing={2} alignItems="center">
+                        <Grid item>
+                            <SearchIcon className={classes.block} color="inherit" />
+                        </Grid>
+                        <Grid item xs>
+                            <TextField
+                                fullWidth
+                                placeholder="Search by email address or user UID"
+                                InputProps={{
+                                    disableUnderline: true,
+                                    className: classes.searchInput,
+                                }}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" color="primary" className={classes.addUser}>
+                                Add user
+                            </Button>
+                            <Tooltip title="Reload">
+                                <IconButton>
+                                    <RefreshIcon className={classes.block} color="inherit" />
+                                </IconButton>
+                            </Tooltip>
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </AppBar> */}
+            {/* <div className={classes.contentWrapper}>
+                <Typography color="textSecondary" align="center">
+                    {turtles.map((t,index)=>{
+                        return(
+                            <PostCard title={t.name} weapon={t.weapon} img={t.imgUrl} nickName={t.nickName}/>
+                        )
+                    })}
+                </Typography>
+            </div> */}
+            <div>
+                <Typography color="inherit" variant="h5" component="h1" style={{margin: 15}}>
+                    Courses
+                </Typography>
+                <CoursesForm />
+                <Grid container spacing={24} justify="space-between">
+                    <Grid item md={3} className={classes.course}>
+                    <CoursesCard />
+                    </Grid>
+                    <Grid item md={3} className={classes.course}>
+                    <CoursesCard />
+                    </Grid>
+                    <Grid item md={3} className={classes.course}>
+                    <CoursesCard />
+                    </Grid>
+                </Grid>
+                <Typography
+                    type="title"
+                    color="inherit"
+                    style={{ borderBottom: '0.1em solid black', padding: '0.5em' }}
+                ></Typography>
+                <Typography color="inherit" variant="h5" component="h1" style={{margin: 15}}>
+                    Groups
+                </Typography>
+                <GroupsForm />
+                <Grid container spacing={24} justify="space-between">
+                    <Grid item md={3} className={classes.course}>
+                    <GroupsCard />
+                    </Grid>
+                    <Grid item md={3} className={classes.course}>
+                    <GroupsCard />
+                    </Grid>
+                    <Grid item md={3} className={classes.course}>
+                    <GroupsCard />
+                    </Grid>
+                </Grid>
+            </div>
+        </Paper>
+      </div>
+    );
 }
 
 Content.propTypes = {
-  classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Content);

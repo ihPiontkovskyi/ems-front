@@ -90,12 +90,12 @@ function Header(props) {
               {/* <Typography color="inherit" variant="h5" component="h1">
                 Post Page
               </Typography> */}
-              <Typography color="inherit" variant="h6" component="h1">
+              {/* <Typography color="inherit" variant="h6" component="h1">
                 Course name (ID)
               </Typography>
               <Typography color="inherit" variant="h6" component="h1">
                 Lecture: lecture
-              </Typography>
+              </Typography> */}
             </Grid>
             {/* <Grid item>
               <Tooltip title="Help">
