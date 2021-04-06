@@ -35,6 +35,8 @@ export class Login extends React.Component {
       const cookies = new Cookies();
       cookies.set('SESSIONID', response.data.sessionId, {path: '/'});
       cookies.set('ROLE', response.data.role, {path: '/'});
+      localStorage.setItem('uid',this.state.uid);
+      localStorage.setItem('role',response.data.role);
     });
 
   }
