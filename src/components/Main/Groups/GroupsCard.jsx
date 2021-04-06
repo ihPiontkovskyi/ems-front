@@ -35,23 +35,20 @@ function SimpleCard(props) {
 			<Card className={classes.card}>
 				<CardContent>
 					<Typography className={classes.title} color="textSecondary">
-						Word of the Day
+						{props.groupUid}
 					</Typography>
 					<Typography variant="headline" component="h2">
-						be{bull}nev{bull}o{bull}lent
+						{props.groupName}
 					</Typography>
 					<Typography className={classes.pos} color="textSecondary">
-						adjective
 					</Typography>
 					<Typography component="p">
-						well meaning and kindly.
-						<br />
-						{'"a benevolent smile"'}
+						{bull}{props.groupLecturer}
 					</Typography>
 				</CardContent>
 				<CardActions>
 					<Button size="small" component={Link} to={`/main/groups`}>
-						Learn More
+						Details
 					</Button>
 				</CardActions>
 			</Card>
@@ -61,6 +58,9 @@ function SimpleCard(props) {
 
 SimpleCard.propTypes = {
 	classes: PropTypes.object.isRequired,
+	groupName: PropTypes.string,
+	groupUid: PropTypes.string,
+	groupLecturer: PropTypes.string
 }
 
 export default withStyles(styles)(SimpleCard)

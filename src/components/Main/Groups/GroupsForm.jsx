@@ -6,12 +6,19 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from "axios";
+import CoursesCard from "../Courses/CoursesCard";
+import Grid from "@material-ui/core/Grid";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    axios.defaults.baseURL = 'http://localhost:33500/'
+    axios.defaults.withCredentials = true;
+
+    axios.post('/generate-groups').then();
+    setOpen(false);
   };
 
   const handleClose = () => {
@@ -20,8 +27,8 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button variant="outlined" color="secondary" onClick={handleClickOpen} style={{margin: 20}}>
-        Add Group
+      <Button variant="outlined" hidden={localStorage.getItem('role') === 'STUDENT'} color="secondary" onClick={handleClickOpen} style={{margin: 20}}>
+        Generate groups
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Create Group</DialogTitle>

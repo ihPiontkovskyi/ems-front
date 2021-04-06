@@ -36,6 +36,12 @@ const styles = theme => ({
 	},
 })
 
+const handleSignOut = (props) => {
+	props.login(false);
+	localStorage.removeItem('uid');
+	localStorage.removeItem('role');
+}
+
 function Header(props) {
 	const { classes, onDrawerToggle } = props
 
@@ -53,7 +59,7 @@ function Header(props) {
 						</Hidden>
 						<Grid item xs />
 						<Grid item>
-							<Link className={classes.link} onClick={() => props.login(false)} variant="body2">
+							<Link className={classes.link} onClick={()=> handleSignOut(props)} variant="body2">
 								Sign Out
 							</Link>
 						</Grid>

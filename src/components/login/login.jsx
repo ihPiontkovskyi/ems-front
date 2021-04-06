@@ -24,7 +24,7 @@ export class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    axios.defaults.baseURL = 'https://service-ems.herokuapp.com/'
+    axios.defaults.baseURL = 'http://localhost:33500/'
     axios.defaults.withCredentials = true;
     axios.post('/login',
         {
@@ -35,6 +35,8 @@ export class Login extends React.Component {
       const cookies = new Cookies();
       cookies.set('SESSIONID', response.data.sessionId, {path: '/'});
       cookies.set('ROLE', response.data.role, {path: '/'});
+      localStorage.setItem('uid',this.state.uid);
+      localStorage.setItem('role',response.data.role);
     });
 
   }
