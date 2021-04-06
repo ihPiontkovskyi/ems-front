@@ -69,21 +69,18 @@ const Root = () => {
 					}}
 				/>
 				<Route
-					exact
 					path="/main"
 					render={() => {
-						return isLogin ? <Main /> : <Redirect to="/login" />
+						return isLogin ? <Main login={setIsLogin} /> : <Redirect to="/login" />
 					}}
 				/>
 				<Route
-					exact
 					path="/login"
 					render={() => {
 						return isLogin ? <Redirect to="/main" /> : <App />
 					}}
 				/>
 				<Route
-					exact
 					path="/chat"
 					render={() => {
 						return isLogin ? <Chat /> : <Redirect to="/login" />
