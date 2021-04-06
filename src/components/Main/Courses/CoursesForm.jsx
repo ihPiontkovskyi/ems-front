@@ -6,54 +6,81 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from "axios";
 
 export default function FormDialog() {
-  const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    let description = '';
+    let name = '';
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
-  return (
-    <div>
-      <Button variant="outlined" color="secondary" onClick={handleClickOpen} style={{margin: 20}}>
-        Add Course
-      </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Create Course</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, atque.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="title"
-            label="Title"
-            type="text"
-            fullWidth
-          />
-          <TextField
-            margin="dense"
-            id="Lecture Name"
-            label="Lecture Name"
-            type="text"
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Create
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const changeDescription = e => {
+        description = e.target.value;
+    }
+
+    const changeName = e => {
+        name = e.target.value;
+    }
+
+    const handleCreate = () => {
+        axios.defaults.baseURL = 'http://localhost:33500/'
+        axios.defaults.withCredentials = true;
+        axios.post('add?userUid='+localStorage.getItem('uid'),
+            {
+                "description": description,
+                "name": name
+            }
+        ).then();
+        setOpen(false);
+    }
+
+    return (
+        <div>
+            <Button variant="outlined" color="secondary" hidden={localStorage.getItem('role') === 'STUDENT'} onClick={handleClickOpen} style={{margin: 20}}>
+                Add Course
+            </Button>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Create Course</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                       Course creation form
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="Name"
+                        label="Name"
+                        type="text"
+                        fullWidth
+                        onChange={changeName}
+                    />
+                    <TextField
+                        margin="dense"
+                        id="description"
+                        label="Description"
+                        type="text"
+                        fullWidth
+                        onChange={changeDescription}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleCreate} color="primary">
+                        Create
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
+    );
 }
+
