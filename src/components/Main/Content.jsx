@@ -31,7 +31,7 @@ function Content(props) {
     const [courseData, setCourseData] = React.useState([]);
     const [groupData, setGroupData] = React.useState([]);
 
-    axios.defaults.baseURL = 'http://localhost:33500/'
+    axios.defaults.baseURL = 'https://service-ems.herokuapp.com/'
     axios.defaults.withCredentials = true;
     if (isLoadingCourses) {
         axios.get('/all-courses').then(function (res) {
