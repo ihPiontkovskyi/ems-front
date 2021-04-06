@@ -25,7 +25,7 @@ const categories = [
     children: [
       { id: 'Courses & Groups', icon: <PeopleIcon />, active: true },
       // { id: 'Projects', icon: <DnsRoundedIcon /> },
-      { id: 'Chat', icon: <PermMediaOutlinedIcon /> },
+      // { id: 'Chat', icon: <PermMediaOutlinedIcon /> },
     ],
   }
 ];
