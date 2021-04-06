@@ -9,7 +9,10 @@ import Box from '@material-ui/core/Box';
 import PostCard from './Posts/PostCard';
 import Button from '@material-ui/core/Button';
 import PostForm from './Posts/PostForm'
-import CoursesForm from './Courses/CoursesForm'
+import TasksForm from './Tasks/TasksForm'
+import TasksCard from './Tasks/TasksCard'
+import ResultForm from './Tasks/ResultForm'
+import Grid from '@material-ui/core/Grid';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -80,14 +83,36 @@ export default function SimpleTabs() {
            
        }
     ]
+  
+    const tasks = [
+      {
+          title: "Task1",
+          score: "12/20",
+          
+      },
+      {
+          title: "Task2",
+          score: "0/15",
+          
+      },
+      {
+          title: "Task3",
+          score: "7/10",
+          
+      },
+      {
+          title: "Task4",
+          score: "25/25",
+          
+      }
+   ]
     
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Posts" {...a11yProps(0)} />
-          <Tab label="Courses" {...a11yProps(1)} />
-          <Tab label="Groups" {...a11yProps(2)} />
+          <Tab label="Tasks" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -99,10 +124,15 @@ export default function SimpleTabs() {
         })}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CoursesForm/>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+        <Box display="flex">
+          <TasksForm/>
+          <ResultForm />
+        </Box>
+        {tasks.map((t,index)=>{
+            return(
+                <TasksCard title={t.title} score={t.score}/>
+            )
+        })}
       </TabPanel>
     </div>
   );

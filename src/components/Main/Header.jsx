@@ -76,15 +76,12 @@ function Header(props) {
 				<Toolbar>
 					<Grid container alignItems="center" spacing={1}>
 						<Grid item xs>
-							{/* <Typography color="inherit" variant="h5" component="h1">
-                Post Page
-              </Typography> */}
-							{/* <Typography color="inherit" variant="h6" component="h1">
-                Course name (ID)
-              </Typography>
-              <Typography color="inherit" variant="h6" component="h1">
-                Lecture: lecture
-              </Typography> */}
+							<Typography color="inherit" variant="h6" component="h1">
+								Course name: Name
+							</Typography>
+							<Typography color="inherit" variant="h6" component="h1">
+								Lecture: lecture
+							</Typography>
 						</Grid>
 						{/* <Grid item>
               <Tooltip title="Help">

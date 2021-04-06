@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom'
 export default function (params) {
 	return (
 		<>
-			<Posts />
-			<Button color="primary" component={Link} to="/chat">
+			<Button color="secondary" variant="contained" component={Link} to="/chat" style={{ marginBottom: 20}}>
 				Chat
 			</Button>
+			<Posts />
+			
 		</>
 	)
 }
